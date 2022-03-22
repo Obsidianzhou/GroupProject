@@ -72,3 +72,6 @@ class DogWalker(models.Model):
 		
 	def get_Acpt_Pup(self):
 		return self.acpt_pup
+
+	def __str__(self):
+		return self.name
