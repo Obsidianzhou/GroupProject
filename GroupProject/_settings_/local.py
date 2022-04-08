@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'api', 
+    'django_filters',
     
     'homepage',
     'login',
@@ -48,8 +51,21 @@ INSTALLED_APPS = [
     'dogWalkers',
     'dogTrainers',
     'vetHelp',
+    'gdpr',
     
 ]
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ]
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,6 +156,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+#User images location
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'usrImgs') 
+MEDIA_URL = '/usrImgs/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

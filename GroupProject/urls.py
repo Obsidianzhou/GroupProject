@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('homepage.urls')),
-    path(r'dogWalkers/', include('dogWalkers.urls'))
-]
+    path(r'', include('homepage.urls'), name='home'),
+    path(r'dogWalkers/', include('dogWalkers.urls'), name='dogWalkers'),
+    path(r'dogTrainers/', include('dogWalkers.urls'), name='dogTrainers'),
+    path('api/v1/', include('api.urls')),
+    path(r'gdpr/', include('gdpr.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
